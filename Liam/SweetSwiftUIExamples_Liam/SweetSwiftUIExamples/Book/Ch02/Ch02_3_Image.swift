@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Ch02_3_Image: View {
   var body: some View {
-    Example01()
+    Example07()
   }
 }
 
@@ -40,15 +40,15 @@ private extension Ch02_3_Image {
         HStack {
           Image("SwiftUI")
           Image("SwiftUI").resizable()
-            .frame(width: 50, height: 50)
+            .frame(width: 25, height: 25)
           Image("SwiftUI").resizable()
-            .frame(width: 200, height: 200)
+            .frame(width: 100, height: 100)
         }
         
         HStack {
           Image("SwiftUI")
             .resizable(capInsets: .init(top: 0, leading: 50, bottom: 0, trailing: 0))
-            .frame(width: 150, height: 150)
+            .frame(width: 200, height: 200)
           
           Image("SwiftUI")
             .resizable(resizingMode: .tile)
@@ -69,7 +69,7 @@ private extension Ch02_3_Image {
         
         Image("SwiftUI").resizable()
           .scaledToFit()
-          .frame(width: 100, height: 150)
+          .frame(width: 50, height: 50)
         
         Image("SwiftUI").resizable()
           .scaledToFill()
@@ -87,7 +87,7 @@ private extension Ch02_3_Image {
       HStack(spacing: 30) {
         Image("SwiftUI").resizable()
           .aspectRatio(CGSize(width: 1.6, height: 1), contentMode: .fit)
-          .frame(width: 150, height: 150)
+          .frame(width: 200, height: 250)
         
         Image("SwiftUI").resizable()
           .aspectRatio(0.7, contentMode: .fill)
@@ -104,8 +104,9 @@ private extension Ch02_3_Image {
     var body: some View {
       HStack(spacing: 20) {
         Image("SwiftUI").clipShape(Circle())
+        Image("SwiftUI").clipShape(Circle())
         Image("SwiftUI").clipShape(
-          Rectangle().inset(by: 10)
+          Rectangle().inset(by: 20)
         )
         Image("SwiftUI").clipShape(
           Ellipse().path(in: CGRect(x: 10, y: 10, width: 80, height: 110))
@@ -123,6 +124,7 @@ private extension Ch02_3_Image {
         Image("SwiftUI")
         Image("SwiftUI").renderingMode(.original)
         Image("SwiftUI").renderingMode(.template)
+        Image("SwiftUI").renderingMode(.original)
       }
       .foregroundColor(.red)
     }
@@ -136,6 +138,7 @@ private extension Ch02_3_Image {
       HStack(spacing: 20) {
         Image(systemName: "star.circle")
         Image(systemName: "star.circle.fill")
+        Image(systemName: "book.fill").imageScale(.large).font(.system(size: 50))
       }
     }
   }
@@ -190,7 +193,13 @@ private extension Ch02_3_Image {
 
 struct Ch02_3_Image_Previews: PreviewProvider {
   static var previews: some View {
-    Ch02_3_Image()
-      .previewDisplayName("Sweet SwiftUI")
+    Group {
+        Ch02_3_Image()
+            .previewDisplayName("Sweet SwiftUI")
+        Ch02_3_Image()
+            .previewDisplayName("Sweet SwiftUI")
+        Ch02_3_Image()
+            .previewDisplayName("Sweet SwiftUI")
+    }
   }
 }
