@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Ch02_4_ViewLayout_Stack: View {
   var body: some View {
-    Example01()
+    ExampleMy06()
   }
 }
 
@@ -31,6 +31,32 @@ private extension Ch02_4_ViewLayout_Stack {
       }
     }
   }
+    
+    struct ExampleMy01: View {
+        var body: some View {
+            VStack {
+                Rectangle()
+                    .fill(Color.green)
+                    .frame(width: 150, height: 150)
+                Rectangle()
+                    .fill(Color.yellow)
+                    .frame(width: 150, height: 150)
+            }
+        }
+    }
+    
+    struct ExampleMy02: View {
+        var body: some View {
+            ZStack {
+                Rectangle()
+                    .fill(Color.green)
+                    .frame(width: 150, height: 150)
+                Rectangle()
+                    .fill(Color.yellow)
+                    .frame(width: 150, height: 150)
+            }
+        }
+    }
 
   // MARK: Example 02
   
@@ -48,6 +74,24 @@ private extension Ch02_4_ViewLayout_Stack {
       }
     }
   }
+    
+    struct ExampleMy03: View {
+        var body: some View {
+            ZStack {
+                Rectangle()
+                    .fill(Color.green)
+                    .frame(width: 150, height: 150)
+                Rectangle()
+                    .fill(Color.yellow)
+                    .frame(width: 150, height: 150)
+                    .offset(x: 40, y: 40)
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(width: 150, height: 150)
+                    .offset(x: 80, y: 80)
+            }
+        }
+    }
   
   // MARK: Example 03
   
@@ -91,6 +135,21 @@ private extension Ch02_4_ViewLayout_Stack {
       }
     }
   }
+  struct ExampleMy04: View {
+        var body: some View {
+            HStack(alignment: .bottom) {
+                Rectangle()
+                    .fill(Color.green)
+                    .frame(width: 150, height: 150)
+                Rectangle()
+                    .fill(Color.yellow)
+                    .frame(width: 150, height: 550)
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(width: 150, height: 150)
+            }
+        }
+    }
   
   // MARK: Example 05
   
@@ -107,6 +166,24 @@ private extension Ch02_4_ViewLayout_Stack {
       .font(.largeTitle)
     }
   }
+    
+    struct ExampleMy05: View {
+        var body: some View {
+            HStack {
+                Text("HStack").font(.headline).foregroundColor(Color.blue)
+                Text("은 뷰를 가로로 배열합니다").font(.system(size: 20))
+                Text("!").bold()
+                
+                Text("HStack").font(.headline).foregroundColor(Color.blue)
+                Text("은 뷰를 가로로 배열합니다").font(.system(size: 20))
+                Text("!").bold()
+            }
+            
+            .padding()
+            .border(Color.black)
+            .font(.title)
+        }
+    }
   
   // MARK: Example 06
   
@@ -151,6 +228,63 @@ private extension Ch02_4_ViewLayout_Stack {
         }
       }.padding()
     }
+  }
+}
+
+struct ExampleMy06: View {
+  var body: some View {
+    HStack {
+        Spacer().background(Color.blue).frame(width: 100, height: 100, alignment: .center)
+        Text("Spacer").font(.title).background(Color.yellow)
+        
+        
+        Text("Spacer").font(.title).foregroundColor(.red)
+        Spacer(minLength: 100)
+        Text("Spacer").font(.title).foregroundColor(.yellow)
+    }.background(Color.blue)
+    
+  }
+}
+
+struct ExampleMy07: View {
+  var body: some View {
+    VStack {
+      Text("도형 만들기")
+        .font(.largeTitle)
+        .fontWeight(.heavy)
+      
+      HStack {
+        Text("둥근 모양").font(.title)
+        Spacer()
+      }
+      
+      ZStack {
+        Rectangle()
+          .frame(height: 10)
+        
+        HStack {
+          Circle().fill(Color.yellow)
+          Ellipse().fill(Color.green)
+          Capsule().fill(Color.orange)
+          RoundedRectangle(cornerRadius: 30).fill(Color.gray)
+        }
+      }
+      
+      HStack {
+        Text("각진 모양").font(.title)
+        Spacer()
+      }
+      
+      ZStack {
+        Rectangle().frame(height: 10)
+        
+        HStack {
+          Color.red
+          Rectangle().fill(Color.blue)
+          RoundedRectangle(cornerRadius: 0).fill(Color.purple)
+        }
+      }
+    }.padding()
   }
 }
 
