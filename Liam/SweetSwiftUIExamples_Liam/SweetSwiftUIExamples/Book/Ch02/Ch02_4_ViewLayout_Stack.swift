@@ -10,7 +10,10 @@ import SwiftUI
 
 struct Ch02_4_ViewLayout_Stack: View {
   var body: some View {
-    ExampleMy06()
+    Group{
+        ExampleMy01()
+        ExampleMy02()
+    }
   }
 }
 

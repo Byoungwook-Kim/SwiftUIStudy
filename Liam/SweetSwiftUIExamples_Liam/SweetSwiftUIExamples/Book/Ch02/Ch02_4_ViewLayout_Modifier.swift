@@ -10,7 +10,11 @@ import SwiftUI
 
 struct Ch02_4_ViewLayout_Modifier: View {
   var body: some View {
-    Example01()
+    Group {
+        Example02()
+        ExampleMy03()
+    }
+    
   }
 }
 
@@ -33,7 +37,7 @@ private extension Ch02_4_ViewLayout_Modifier {
       Rectangle()
         .fill(Color.yellow)
         .frame(width: 150, height: 150)
-        .overlay(Rectangle().fill(Color.green))
+        .background(Rectangle().fill(Color.green))
     }
   }
   
@@ -57,6 +61,23 @@ private extension Ch02_4_ViewLayout_Modifier {
                     alignment: .trailing)
     }
   }
+    struct ExampleMy03: View {
+        var body: some View {
+            Circle()
+                .fill(Color.green.opacity(0.8))
+                .frame(width: 250, height: 250)
+                .overlay(Text("Joystick").font(.largeTitle))
+                .background(Image(systemName: "arrow.up").font(.title).padding(),
+                         alignment: .top)
+                .background(Image(systemName: "arrow.left").font(.title).padding(),
+                         alignment: .leading)
+                .overlay(Image(systemName: "arrow.up.right.circle.fill").font(.title), alignment: .topTrailing)
+                .overlay(Image(systemName: "arrow.down").font(.title).padding(),
+                            alignment: .bottom)
+                .overlay(Image(systemName: "arrow.right").font(.title).padding(),
+                            alignment: .trailing)
+        }
+    }
   
   // MARK: Example 04
   
